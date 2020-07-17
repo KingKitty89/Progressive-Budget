@@ -1,5 +1,5 @@
 let db; 
-const request = window.indexedDB.open("budget",1);
+const request = indexedDB.open("budget",1);
 // create a new db request for a "budget" database.
 
 request.onupgradeneeded = function(event) {

@@ -1,11 +1,11 @@
 const FILES_TO_CACHE = [
-    '/',
-    '/index.html',
-    './icons/icon-192x192.png',
-    './icons/icon-512x512.png',
-    '/manifest.webmanifest',
-    '/styles.css',
-    '/index.js',
+    "/",
+    "/index.html",
+    "./icons/icon-192x192.png",
+    "./icons/icon-512x512.png",
+    "/manifest.webmanifest",
+    "/styles.css",
+    "/index.js",
     "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
     "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
     "./db.js",  
@@ -14,7 +14,7 @@ const FILES_TO_CACHE = [
   const CACHE_NAME = "static-cache-v2";
   const DATA_CACHE_NAME = "data-cache-v1";
   
-  self.addEventListener('install', function(evt) {
+  self.addEventListener("install", function(evt) {
       evt.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
           console.log("Your files were pre-cached successfully!");
@@ -42,10 +42,10 @@ const FILES_TO_CACHE = [
       self.clients.claim();
     });
   
-    self.addEventListener('fetch', function (evt) {
+    self.addEventListener("fetch", function (evt) {
       // code to handle requests goes here
-      if (evt.request.url.includes('/api/')) {
-          console.log('[Service Worker] Fetch (data)', evt.request.url);
+      if (evt.request.url.includes("/api/")) {
+          console.log("[Service Worker] Fetch (data)", evt.request.url);
           evt.respondWith(
               caches.open(DATA_CACHE_NAME).then(cache => {
                   return fetch(evt.request)
